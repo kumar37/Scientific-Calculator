@@ -34,7 +34,7 @@ function resetAll() {
 }
 
 function loadInputs(event) {
-  debugger
+  debugger;
   let key = '';
   if (event) key = event.target.innerText;
   console.log(event);
@@ -60,17 +60,17 @@ function executeArithmeticOperation(operand) {
 
   myCalc.currentOperation = operand;
   switch (operand) {
-    case '+':
-      myCalc.add();
+    case 'POW':
+      myCalc.pow();
       break;
-    case '-':
-      myCalc.sub();
+    case 'SIN':
+      myCalc.sin();
       break;
-    case '*':
-      myCalc.mul();
+    case 'COS':
+      myCalc.cos();
       break;
-    case '/':
-      myCalc.div();
+    case 'TAN':
+      myCalc.tan();
       break;
     default:
       break;
@@ -83,3 +83,27 @@ function updateResultInUI() {
   document.querySelector('#result').value =
     myCalc.result !== 'NaN' ? myCalc.result : '0';
 }
+
+// function UsingPow() {
+//   debugger;
+//   const cb = document.querySelector('#areusingpow');
+//   if (cb.checked) {
+//     hide(document.querySelector('.forpow'));
+//   } else {
+//     var elements = document.querySelectorAll('.forpow');
+//     show(elements);
+//   }
+// }
+
+// function hide (elements) {
+//   elements = elements.length ? elements : [elements];
+//   for (var index = 0; index < elements.length; index++) {
+//     elements[index].style.display = 'none';
+//   }
+// }
+// function show (elements, specifiedDisplay) {
+//   elements = elements.length ? elements : [elements];
+//   for (var index = 0; index < elements.length; index++) {
+//     elements[index].style.display = specifiedDisplay || 'block';
+//   }
+// }

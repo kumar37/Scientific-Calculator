@@ -34,6 +34,7 @@ function resetAll() {
 }
 
 function loadInputs(event) {
+  debugger
   let key = '';
   if (event) key = event.target.innerText;
   console.log(event);

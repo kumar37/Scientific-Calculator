@@ -12,6 +12,8 @@
          crossorigin="anonymous"
          />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+      <script src="calccore.js"></script>
+      <script src="script.js"></script>
       <title>Scientific Calc</title>
    </head>
    <body>
@@ -32,6 +34,9 @@
                               </div>
                            </div>
                            <div class="mb-3 row">
+                              <div class="d-flex justify-content-end">
+                                 <div style="height: 10px"><small id="operand"></small></div>
+                               </div>
                               <label for="Input2" class="ccol-sm-3 col-md-3 col-lg-3 col-lx-3 col-form-label">Input 2</label>
                               <div class="col-sm-9 col-md-9 col-lg-9 col-lx-9">
                                  <input type="text" class="form-control" id="Input2" readonly>
@@ -42,77 +47,78 @@
                               <div class="col-sm-9 col-md-9 col-lg-9 col-lx-9">
                                  <div class="input-group mb-3">
                                     <span class="input-group-text" id="output">=</span>
-                                    <input type="text" class="form-control" placeholder="result" readonly>
+                                    <input type="text" class="form-control" placeholder="result" readonly id="result">
                                  </div>
                               </div>
                            </div>
                            <div class="mb-3 row">
                               <div class="form-check col-sm-06 col-md-06 col-lg-06 col-lx-06 ml27">
-                                 <input class="form-check-input" type="radio" name="flexRadio" id="flexRadioInput1" checked>
-                                 <label class="form-check-label" for="flexRadioInput1">
-                                 Input 1
-                                 </label>
-                                 <input class="" type="radio" name="flexRadio" id="flexRadioInput2" >
-                                 <label class="form-check-label" for="flexRadioInput2">
-                                 Input 2
-                                 </label>
+                                 <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="fieldInputSelection" id="inlineRadio1" value="1" />
+                                    <label class="form-check-label" for="inlineRadio1">Input 1</label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="fieldInputSelection" id="inlineRadio2" value="2" />
+                                    <label class="form-check-label" for="inlineRadio2">Input 2</label>
+                                  </div>
                               </div>
                            </div>
                            <div class="row">
                               <div class="col-sm-12 col-md-12 col-lg-3 col-lx-3">
                                  <div class="col-sm-12 col-md-06 col-lg-03 col-lx-03">
-                                    <button type="button" class="btn btn-outline-primary btnwd"><span><i class="fa-solid fa-9"></i></span></button>
+                                    <button type="button" class="btn btn-outline-primary btnwd" onclick="loadInputs(event)"><span><i class="fa-solid fa-9"></i></span></button>
                                  </div>
                                  <div class="col-sm-12 col-md-06 col-lg-03 col-lx-03">
-                                    <button type="button" class="btn btn-outline-primary btnwd"><span><i class="fa-solid fa-6"></i></span></button>
+                                    <button type="button" class="btn btn-outline-primary btnwd" onclick="loadInputs(event)"><span><i class="fa-solid fa-6"></i></span></button>
                                  </div>
                                  <div class="col-sm-12 col-md-06 col-lg-03 col-lx-03">
-                                    <button type="button" class="btn btn-outline-primary btnwd"><span><i class="fa-solid fa-3"></i></span></button>
+                                    <button type="button" class="btn btn-outline-primary btnwd" onclick="loadInputs(event)"><span><i class="fa-solid fa-3"></i></span></button>
                                  </div>
                                  <div class="col-sm-12 col-md-06 col-lg-03 col-lx-03">
-                                    <button type="button" class="btn btn-outline-primary btnwd"><span class="ce">CE</span></button>
+                                    <button type="button" class="btn btn-outline-primary btnwd" 
+                                    onClick="resetAll()"><span class="ce">CE</span></button>
                                  </div>
                               </div>
                               <div class="col-sm-12 col-md-12 col-lg-3 col-lx-3">
                                  <div class="col-sm-12 col-md-06 col-lg-03 col-lx-03">
-                                    <button type="button" class="btn btn-outline-primary btnwd"><span><i class="fa-solid fa-8"></i></span></button>
+                                    <button type="button" class="btn btn-outline-primary btnwd" onclick="loadInputs(event)"><span><i class="fa-solid fa-8" ></i></span></button>
                                  </div>
                                  <div class="col-sm-12 col-md-06 col-lg-03 col-lx-03">
-                                    <button type="button" class="btn btn-outline-primary btnwd"><span><i class="fa-solid fa-5"></i></span></button>
+                                    <button type="button" class="btn btn-outline-primary btnwd" onclick="loadInputs(event)"><span><i class="fa-solid fa-5"></i></span></button>
                                  </div>
                                  <div class="col-sm-12 col-md-06 col-lg-03 col-lx-03">
-                                    <button type="button" class="btn btn-outline-primary btnwd"><span><i class="fa-solid fa-2"></i></span></button>
+                                    <button type="button" class="btn btn-outline-primary btnwd" onclick="loadInputs(event)"><span><i class="fa-solid fa-2"></i></span></button>
                                  </div>
                                  <div class="col-sm-12 col-md-03 col-lg-03 col-lx-03">
-                                    <button type="button" class="btn btn-outline-primary btnwd"><span><i class="fa-solid fa-0"></i></span></button>
+                                    <button type="button" class="btn btn-outline-primary btnwd" onclick="loadInputs(event)"><span><i class="fa-solid fa-0"></i></span></button>
                                  </div>
                               </div>
                               <div class="col-sm-12 col-md-12 col-lg-3 col-lx-3">
                                  <div class="col-sm-12 col-md-06 col-lg-03 col-lx-03">
-                                    <button type="button" class="btn btn-outline-primary btnwd"><span><i class="fa-solid fa-7"></i></span></button>
+                                    <button type="button" class="btn btn-outline-primary btnwd" onclick="loadInputs(event)"><span><i class="fa-solid fa-7"></i></span></button>
                                  </div>
                                  <div class="col-sm-12 col-md-06 col-lg-03 col-lx-03">
-                                    <button type="button" class="btn btn-outline-primary btnwd"><span><i class="fa-solid fa-4"></i></span></button>
+                                    <button type="button" class="btn btn-outline-primary btnwd" onclick="loadInputs(event)"><span><i class="fa-solid fa-4"></i></span></button>
                                  </div>
                                  <div class="col-sm-12 col-md-06 col-lg-03 col-lx-03">
-                                    <button type="button" class="btn btn-outline-primary btnwd"><span><i class="fa-solid fa-1"></i></span></button>
+                                    <button type="button" class="btn btn-outline-primary btnwd" onclick="loadInputs(event)"><span><i class="fa-solid fa-1"></i></span></button>
                                  </div>
                                  <div class="col-sm-12 col-md-06 col-lg-03 col-lx-03">
-                                    <button type="button" class="btn btn-outline-primary btnwd"><span><i class="fa-solid fa-plus"></i></span></button>
+                                    <button type="button" class="btn btn-outline-primary btnwd"  onClick="executeArithmeticOperation('+')"><span><i class="fa-solid fa-plus"></i></span></button>
                                  </div>
                               </div>
                               <div class="col-sm-12 col-md-12 col-lg-3 col-lx-3">
                                  <div class="col-sm-12 col-md-06 col-lg-03 col-lx-03">
-                                    <button type="button" class="btn btn-outline-primary btnwd"><span><i class="fas fa-long-arrow-alt-left"></i></span></button>
+                                    <button type="button" class="btn btn-outline-primary btnwd" onClick="clearInput()" ><span><i class="fas fa-long-arrow-alt-left"></i></span></button>
                                  </div>
                                  <div class="col-sm-12 col-md-06 col-lg-03 col-lx-03">
-                                    <button type="button" class="btn btn-outline-primary btnwd"><span><i class="fa-solid fa-minus"></i></span></button>
+                                    <button type="button" class="btn btn-outline-primary btnwd" onClick="executeArithmeticOperation('-')"><span><i class="fa-solid fa-minus"></i></span></button>
                                  </div>
                                  <div class="col-sm-12 col-md-06 col-lg-03 col-lx-03">
-                                    <button type="button" class="btn btn-outline-primary btnwd"><span><i class="fa-solid fa-star-of-life"></i></span></button>
+                                    <button type="button" class="btn btn-outline-primary btnwd" onClick="executeArithmeticOperation('*')"><span><i class="fa-solid fa-star-of-life"></i></span></button>
                                  </div>
                                  <div class="col-sm-12 col-md-06 col-lg-03 col-lx-03">
-                                    <button type="button" class="btn btn-outline-primary btnwd"><span><i class="fa-solid fa-divide"></i></span></button>
+                                    <button type="button" class="btn btn-outline-primary btnwd" onClick="executeArithmeticOperation('/')"><span><i class="fa-solid fa-divide"></i></span></button>
                                  </div>
                               </div>
                            </div>
